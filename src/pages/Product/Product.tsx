@@ -1,36 +1,38 @@
-import { useEffect } from 'react';
 import { Container } from '@/components/common/Container';
 import { Button } from '@/components/common/ui/Button';
 import { LoadingSpinner } from '@/components/common/LoadingSpinner';
 import { Link, useParams } from 'react-router-dom';
-import { useProducts } from '@/hooks/useProducts';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { addToCart } from '@/store/slices';
-import { fetchProductById } from '@/store/slices/productsSlice';
+import { useGetProductByIdQuery } from '@/store/api/productsApi';
+import { skipToken } from '@reduxjs/toolkit/query';
 
 export const Product = () => {
-  const { getById, loading, selectedProduct: product } = useProducts();
   const dispatch = useAppDispatch();
 
-  const { id: productId } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>();
+  const productId = id ? parseInt(id) : undefined;
 
-  useEffect(() => {
-    if (productId) {
-      dispatch(fetchProductById(parseInt(productId)));
-    }
-  }, [dispatch, productId]);
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useGetProductByIdQuery(productId ?? skipToken, {
+    skip: !id,
+  });
+
+  if (!productId || error)
+    <Container className="py-8 flex items-center text-red">
+      Oops... Something went wrong, try again later
+    </Container>;
 
   const handleAddToCart = () => {
-    if (!productId) {
-      return;
-    }
-    const product = getById(parseInt(productId));
     if (product) {
       dispatch(addToCart(product));
     }
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Container className="py-12">
         <LoadingSpinner size="lg" />

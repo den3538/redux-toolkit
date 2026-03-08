@@ -1,18 +1,18 @@
 import { Container } from '@/components/common/Container';
 import { ProductCard } from '@/components/common/ProductCard';
 import { addToCart } from '@/store/slices';
-import { useProducts } from '@/hooks/useProducts';
 import { useNavigate } from 'react-router-dom';
 import { LoadingSpinner } from '@/components/common';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import { useGetProductsQuery } from '@/store/api/productsApi';
 
 export const Home = () => {
-  const { productsList, getById, loading } = useProducts();
+  const { data: items, isLoading, error } = useGetProductsQuery();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleAddToCart = (productId: number) => {
-    const product = getById(productId);
+    const product = items?.find((i) => i.id === productId);
     // let's imagine it's sentry or any other logging
     if (!product) {
       return console.error("product wasn't found in the list");
@@ -25,7 +25,7 @@ export const Home = () => {
     navigate(`/product/${productId}`);
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Container className="py-8">
         <LoadingSpinner size="lg" />
@@ -43,10 +43,15 @@ export const Home = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {!productsList.length && (
+        {error && (
+          <div className="flex items-center text-red">
+            Oops... Something went wrong, try again later
+          </div>
+        )}
+        {!items?.length && (
           <div className="flex items-center text-white">Empty list</div>
         )}
-        {productsList.map((product) => (
+        {items?.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
