@@ -37,7 +37,7 @@ export default defineConfig([
     },
 
     rules: {
-      'prettier/prettier': 'error',
+      'prettier/prettier': ['error', { singleQuote: false, semi: true }],
       '@typescript-eslint/no-unused-vars': 'off',
       'no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'error',

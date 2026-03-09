@@ -1,6 +1,6 @@
-import type { Product } from '@/types';
-import { createSlice } from '@reduxjs/toolkit';
-import mockData from '@/mock-data.json';
+import type { Product } from "@/types";
+import { createSlice } from "@reduxjs/toolkit";
+import mockData from "@/mock-data.json";
 
 interface productsState {
   items: Product[];
@@ -15,7 +15,7 @@ const initialState: productsState = {
 };
 
 const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState,
   reducers: {
     setProducts: (state) => {

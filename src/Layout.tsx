@@ -1,5 +1,5 @@
-import { NavLink, Outlet } from 'react-router-dom';
-import { useCart } from '@/hooks/useCart';
+import { NavLink, Outlet } from "react-router-dom";
+import { useCart } from "@/hooks/useCart";
 
 function Layout() {
   const { amount } = useCart();
@@ -11,30 +11,24 @@ function Layout() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <h1 className="text-xl font-bold text-gray-900">
-                  Redux Toolkit Store
-                </h1>
+                <h1 className="text-xl font-bold text-gray-900">Redux Toolkit Store</h1>
               </div>
               <div className="flex gap-4">
                 <NavLink
-                  to={'/'}
+                  to={"/"}
                   className={({ isActive }) =>
                     `px-4 py-2 rounded-md font-medium ${
-                      isActive
-                        ? 'bg-blue-600 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
+                      isActive ? "bg-blue-600 text-white" : "text-gray-700 hover:bg-gray-100"
                     }`
                   }
                 >
                   Home
                 </NavLink>
                 <NavLink
-                  to={'/cart'}
+                  to={"/cart"}
                   className={({ isActive }) =>
                     `px-4 py-2 rounded-md font-medium relative ${
-                      isActive
-                        ? 'bg-blue-600 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
+                      isActive ? "bg-blue-600 text-white" : "text-gray-700 hover:bg-gray-100"
                     }`
                   }
                 >

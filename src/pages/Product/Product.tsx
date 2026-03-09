@@ -1,11 +1,11 @@
-import { Container } from '@/components/common/Container';
-import { Button } from '@/components/common/ui/Button';
-import { LoadingSpinner } from '@/components/common/LoadingSpinner';
-import { Link, useParams } from 'react-router-dom';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
-import { addToCart } from '@/store/slices';
-import { useGetProductByIdQuery } from '@/store/api/productsApi';
-import { skipToken } from '@reduxjs/toolkit/query';
+import { Container } from "@/components/common/Container";
+import { Button } from "@/components/common/ui/Button";
+import { LoadingSpinner } from "@/components/common/LoadingSpinner";
+import { Link, useParams } from "react-router-dom";
+import { useAppDispatch } from "@/store/hooks/useAppDispatch";
+import { addToCart } from "@/store/slices";
+import { useGetProductByIdQuery } from "@/store/api/productsApi";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 export const Product = () => {
   const dispatch = useAppDispatch();
@@ -44,13 +44,9 @@ export const Product = () => {
     return (
       <Container className="py-12">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
-            Product Not Found
-          </h1>
-          <p className="text-gray-600 mb-4">
-            The product you're looking for doesn't exist.
-          </p>
-          <Button variant="primary" as={Link} to={'/'}>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Product Not Found</h1>
+          <p className="text-gray-600 mb-4">The product you're looking for doesn't exist.</p>
+          <Button variant="primary" as={Link} to={"/"}>
             Go Back Home
           </Button>
         </div>
@@ -76,9 +72,7 @@ export const Product = () => {
             <span className="text-sm text-gray-500 uppercase tracking-wide">
               {product.category}
             </span>
-            <h1 className="text-3xl font-bold text-gray-900 mt-2 mb-4">
-              {product.title}
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-900 mt-2 mb-4">{product.title}</h1>
             <div className="flex items-center gap-4 mb-4">
               <div className="flex items-center">
                 <span className="text-yellow-400 text-xl">★</span>
@@ -87,38 +81,25 @@ export const Product = () => {
                 </span>
               </div>
               <span className="text-gray-400">•</span>
-              <span className="text-gray-600">
-                {product.rating.count} reviews
-              </span>
+              <span className="text-gray-600">{product.rating.count} reviews</span>
             </div>
-            <p className="text-4xl font-bold text-blue-600">
-              ${product.price.toFixed(2)}
-            </p>
+            <p className="text-4xl font-bold text-blue-600">${product.price.toFixed(2)}</p>
           </div>
 
           <div className="border-t border-gray-200 pt-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
-              Description
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              {product.description}
-            </p>
+            <h2 className="text-xl font-semibold text-gray-900 mb-3">Description</h2>
+            <p className="text-gray-700 leading-relaxed">{product.description}</p>
           </div>
 
           <div className="flex gap-4 pt-4">
-            <Button
-              variant="primary"
-              size="lg"
-              className="flex-1"
-              onClick={handleAddToCart}
-            >
+            <Button variant="primary" size="lg" className="flex-1" onClick={handleAddToCart}>
               Add to Cart
             </Button>
             <Button
               variant="outline"
               size="lg"
               className="flex-1"
-              onClick={() => console.log('Buy now')}
+              onClick={() => console.log("Buy now")}
               disabled
             >
               Buy Now

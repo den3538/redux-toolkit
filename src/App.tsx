@@ -1,8 +1,8 @@
-import { Home } from '@/pages/Home/Home';
-import { Cart } from '@/pages/Cart/Cart';
-import { Product } from '@/pages/Product/Product';
-import { Route, Routes } from 'react-router-dom';
-import Layout from '@/Layout';
+import { Home } from "@/pages/Home/Home";
+import { Cart } from "@/pages/Cart/Cart";
+import { Product } from "@/pages/Product/Product";
+import { Route, Routes } from "react-router-dom";
+import Layout from "@/Layout";
 
 function App() {
   return (

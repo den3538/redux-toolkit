@@ -1,6 +1,6 @@
-import type { CartProduct, Product } from '@/types';
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { changeItemQuantity, getTotal } from '@/store/utils/cart';
+import type { CartProduct, Product } from "@/types";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { changeItemQuantity, getTotal } from "@/store/utils/cart";
 
 interface cartState {
   items: CartProduct[];
@@ -15,7 +15,7 @@ const initialState: cartState = {
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
@@ -44,9 +44,7 @@ const cartSlice = createSlice({
     },
 
     removeFromCart: (state, action: PayloadAction<number>) => {
-      const indexToRemove = state.items.findIndex(
-        (i) => i.id === action.payload,
-      );
+      const indexToRemove = state.items.findIndex((i) => i.id === action.payload);
       if (indexToRemove === -1) {
         // imagine sentry logging
         console.log("Didn't find product to remove");
@@ -62,6 +60,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, increaseQuantity, decreaseQuantity, removeFromCart } =
-  cartSlice.actions;
+export const { addToCart, increaseQuantity, decreaseQuantity, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

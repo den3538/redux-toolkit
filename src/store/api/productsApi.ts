@@ -1,43 +1,38 @@
-import { BASE_URL } from '@/constants/constants';
-import type { Product } from '@/types';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { BASE_URL } from "@/constants/constants";
+import type { Product } from "@/types";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const productApi = createApi({
-  reducerPath: 'productApi',
+  reducerPath: "productApi",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ['Product'], // обязательно, если используешь providesTags / invalidatesTags
+  tagTypes: ["Product"], // обязательно, если используешь providesTags / invalidatesTags
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], void>({
-      query: () => '/products',
-      providesTags: ['Product'],
+      query: () => "/products",
+      providesTags: ["Product"],
     }),
     getProductById: builder.query<Product, number>({
       query: (id) => `/products/${id}`,
-      providesTags: (_, __, id) => [{ type: 'Product', id }],
+      providesTags: (_, __, id) => [{ type: "Product", id }],
     }),
     createNewProduct: builder.mutation<Product, Partial<Product>>({
       query: (newProduct) => ({
-        url: '/products',
-        method: 'PUT',
+        url: "/products",
+        method: "PUT",
         body: newProduct,
       }),
-      invalidatesTags: ['Product'],
+      invalidatesTags: ["Product"],
     }),
-    updateProduct: builder.mutation<Product, Partial<Product> & { id: number }>(
-      {
-        query: ({ id, ...body }) => ({
-          url: `/products/${id}`,
-          method: 'PUT',
-          body,
-        }),
-        invalidatesTags: (_, __, { id }) => [{ type: 'Product', id }],
-      },
-    ),
+    updateProduct: builder.mutation<Product, Partial<Product> & { id: number }>({
+      query: ({ id, ...body }) => ({
+        url: `/products/${id}`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: (_, __, { id }) => [{ type: "Product", id }],
+    }),
   }),
 });
 
-export const {
-  useGetProductsQuery,
-  useGetProductByIdQuery,
-  useCreateNewProductMutation,
-} = productApi;
+export const { useGetProductsQuery, useGetProductByIdQuery, useCreateNewProductMutation } =
+  productApi;

@@ -1,5 +1,5 @@
-import type { Product } from '@/types/product';
-import { Button } from '@/components/common/ui/Button';
+import type { Product } from "@/types/product";
+import { Button } from "@/components/common/ui/Button";
 
 interface CartItemProps {
   product: Product;
@@ -24,21 +24,12 @@ export const CartItem = ({
         className="w-20 h-20 object-contain rounded-lg bg-gray-100"
       />
       <div className="flex-1 min-w-0">
-        <h3 className="font-semibold text-gray-900 truncate">
-          {product.title}
-        </h3>
+        <h3 className="font-semibold text-gray-900 truncate">{product.title}</h3>
         <p className="text-sm text-gray-500">{product.category}</p>
-        <p className="text-lg font-bold text-blue-600 mt-1">
-          ${product.price.toFixed(2)}
-        </p>
+        <p className="text-lg font-bold text-blue-600 mt-1">${product.price.toFixed(2)}</p>
       </div>
       <div className="flex items-center gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={onDecrease}
-          disabled={quantity <= 1}
-        >
+        <Button variant="outline" size="sm" onClick={onDecrease} disabled={quantity <= 1}>
           -
         </Button>
         <span className="w-8 text-center font-medium">{quantity}</span>
@@ -47,9 +38,7 @@ export const CartItem = ({
         </Button>
       </div>
       <div className="flex flex-col items-end gap-2">
-        <p className="text-lg font-bold text-gray-900">
-          ${(product.price * quantity).toFixed(2)}
-        </p>
+        <p className="text-lg font-bold text-gray-900">${(product.price * quantity).toFixed(2)}</p>
         <Button variant="danger" size="sm" onClick={onRemove}>
           Remove
         </Button>

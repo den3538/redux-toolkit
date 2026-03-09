@@ -1,16 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Container } from '@/components/common/Container';
-import { CartItem } from '@/components/common/CartItem';
-import { Button } from '@/components/common/ui/Button';
-import { LoadingSpinner } from '@/components/common/LoadingSpinner';
-import { useCart } from '@/hooks/useCart';
-import {
-  decreaseQuantity,
-  increaseQuantity,
-  removeFromCart,
-} from '@/store/slices/cartSlice';
-import { Link } from 'react-router-dom';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import { useState, useEffect } from "react";
+import { Container } from "@/components/common/Container";
+import { CartItem } from "@/components/common/CartItem";
+import { Button } from "@/components/common/ui/Button";
+import { LoadingSpinner } from "@/components/common/LoadingSpinner";
+import { useCart } from "@/hooks/useCart";
+import { decreaseQuantity, increaseQuantity, removeFromCart } from "@/store/slices/cartSlice";
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "@/store/hooks/useAppDispatch";
 
 export const Cart = () => {
   // TODO: Replace with actual cart state from Redux
@@ -47,15 +43,14 @@ export const Cart = () => {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Shopping Cart</h1>
         <p className="text-gray-600">
-          {cartItems.length} {cartItems.length === 1 ? 'item' : 'items'} in your
-          cart
+          {cartItems.length} {cartItems.length === 1 ? "item" : "items"} in your cart
         </p>
       </div>
 
       {cartItems.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg mb-4">Your cart is empty</p>
-          <Button variant="primary" as={Link} to={'/'}>
+          <Button variant="primary" as={Link} to={"/"}>
             Continue Shopping
           </Button>
         </div>
@@ -78,9 +73,7 @@ export const Cart = () => {
 
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
-                Order Summary
-              </h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal</span>
