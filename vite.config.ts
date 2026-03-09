@@ -16,6 +16,7 @@ export default defineConfig({
   json: {
     namedExports: true,
   },
+  base: "/redux-toolkit/",
   plugins: [...plugins, react(), tsconfigPaths()],
   resolve: {
     alias: {
