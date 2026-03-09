@@ -21,48 +21,38 @@ export const CartItem = ({
       <img
         src={product.image}
         alt={product.title}
-        className="w-full h-auto object-contain rounded-lg bg-gray-100 mb-2 sm:mb-0"
+        className="sm:w-20 sm:h-20 w-full h-auto object-contain rounded-lg bg-gray-100"
       />
-      <div className="flex-1 min-w-0 w-full">
-        <h3 className="font-semibold text-gray-900 truncate text-base sm:text-lg">
+      <div className="flex-1 min-w-0">
+        <h3 className="font-semibold text-gray-900 truncate">
           {product.title}
         </h3>
-        <p className="text-xs sm:text-sm text-gray-500">{product.category}</p>
-        <p className="text-base sm:text-lg font-bold text-blue-600 mt-1">
+        <p className="text-sm text-gray-500">{product.category}</p>
+        <p className="text-lg font-bold text-blue-600 mt-1">
           ${product.price.toFixed(2)}
         </p>
       </div>
-      <div className="flex flex-row sm:flex-col items-center sm:items-end gap-2 w-full sm:w-auto mt-2 sm:mt-0">
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onDecrease}
-            disabled={quantity <= 1}
-            className="w-8 h-8 sm:w-8 sm:h-8"
-          >
-            -
-          </Button>
-          <span className="w-8 text-center font-medium text-base">
-            {quantity}
-          </span>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onIncrease}
-            className="w-8 h-8 sm:w-8 sm:h-8"
-          >
-            +
-          </Button>
-        </div>
-        <div className="flex flex-col items-end gap-2 w-full sm:w-auto">
-          <p className="text-base sm:text-lg font-bold text-gray-900">
-            ${(product.price * quantity).toFixed(2)}
-          </p>
-          <Button variant="danger" size="sm" onClick={onRemove}>
-            Remove
-          </Button>
-        </div>
+      <div className="flex items-center gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={onDecrease}
+          disabled={quantity <= 1}
+        >
+          -
+        </Button>
+        <span className="w-8 text-center font-medium">{quantity}</span>
+        <Button variant="outline" size="sm" onClick={onIncrease}>
+          +
+        </Button>
+      </div>
+      <div className="flex flex-col sm:items-end items-center gap-2">
+        <p className="text-lg font-bold text-gray-900">
+          ${(product.price * quantity).toFixed(2)}
+        </p>
+        <Button variant="danger" size="sm" onClick={onRemove}>
+          Remove
+        </Button>
       </div>
     </div>
   );
