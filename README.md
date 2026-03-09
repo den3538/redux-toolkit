@@ -1,4 +1,5 @@
-![CI](https://github.com/den3538/redux-toolkit/actions/workflows/ci.yml/badge.svg)
+Gh-pages - https://den3538.github.io/redux-toolkit/
+Deploy:![CI](https://github.com/den3538/redux-toolkit/actions/workflows/ci.yml/badge.svg)
 
 # Redux Toolkit E-Commerce Demo
 
