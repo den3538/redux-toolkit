@@ -6,11 +6,10 @@ interface CardProps {
   onClick?: () => void;
 }
 
-export const Card = ({ children, className = "", onClick }: CardProps) => {
+export const Card = ({ children, className = "" }: CardProps) => {
   return (
     <div
-      className={`bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ${onClick ? "cursor-pointer" : ""} ${className}`}
-      onClick={onClick}
+      className={`bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ${className}`}
     >
       {children}
     </div>

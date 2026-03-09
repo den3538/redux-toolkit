@@ -71,3 +71,4 @@ export default defineConfig([
   },
 ])
 ```
+![CI](https://github.com/den3538/redux-toolkit/actions/workflows/ci.yml/badge.svg)

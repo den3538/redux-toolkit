@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productApi = createApi({
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ["Product"], // обязательно, если используешь providesTags / invalidatesTags
+  tagTypes: ["Product"],
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], void>({
       query: () => "/products",
@@ -23,16 +23,17 @@ export const productApi = createApi({
       }),
       invalidatesTags: ["Product"],
     }),
-    updateProduct: builder.mutation<Product, Partial<Product> & { id: number }>({
-      query: ({ id, ...body }) => ({
-        url: `/products/${id}`,
-        method: "PUT",
-        body,
-      }),
-      invalidatesTags: (_, __, { id }) => [{ type: "Product", id }],
-    }),
+    updateProduct: builder.mutation<Product, Partial<Product> & { id: number }>(
+      {
+        query: ({ id, ...body }) => ({
+          url: `/products/${id}`,
+          method: "PUT",
+          body,
+        }),
+        invalidatesTags: (_, __, { id }) => [{ type: "Product", id }],
+      },
+    ),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductByIdQuery, useCreateNewProductMutation } =
-  productApi;
+export const { useGetProductsQuery, useGetProductByIdQuery } = productApi;
