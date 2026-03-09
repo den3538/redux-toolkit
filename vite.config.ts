@@ -4,7 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-const env: Record<string, string> = loadEnv("all", import.meta.dirname);
+const env = loadEnv("all", process.cwd(), "VITE_");
 
 const plugins: PluginOption[] = [];
 
@@ -16,7 +16,7 @@ export default defineConfig({
   json: {
     namedExports: true,
   },
-  base: "/redux-toolkit/",
+  base: env.VITE_BASE_URL,
   plugins: [...plugins, react(), tsconfigPaths()],
   resolve: {
     alias: {
