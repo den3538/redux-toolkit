@@ -1,47 +1,114 @@
-# React + TypeScript + Vite
+![CI](https://github.com/den3538/redux-toolkit/actions/workflows/ci.yml/badge.svg)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Redux Toolkit E-Commerce Demo
 
-Currently, two official plugins are available:
+> This project is a demo e-commerce application built with **React**, **Redux Toolkit**, **TypeScript**, and **Vite**. It features a simple product catalog, shopping cart, and product details, using modern best practices and a modular code structure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Product listing with details
+- Shopping cart with add, remove, and quantity adjustment
+- Product data fetched from [Fake Store API](https://fakestoreapi.com/) (with fallback to local mock data)
+- State management with Redux Toolkit (including RTK Query for API calls)
+- TypeScript for type safety
+- Tailwind CSS for styling
+- React Router for navigation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+  App.tsx            # Main app with routes
+  Layout.tsx         # Layout with navigation
+  pages/             # Home, Cart, Product pages
+  components/        # UI and common components
+  store/             # Redux slices, store, API
+  types/             # TypeScript types
+  hooks/             # Custom hooks
+  constants/         # Constants (API base URL)
+  mock-data.json     # Local fallback product data
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/den3538/redux-toolkit.git
+cd redux-toolkit
+npm install
+# or
+yarn install
+```
+
+### Running the App
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The app will be available at [http://localhost:3538](http://localhost:3538).
+
+### Build for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+### Linting
+
+```bash
+npm run lint
+```
+
+## Main Dependencies
+
+- [React](https://react.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
+- [React Router](https://reactrouter.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+
+## API & Data
+
+- **Products** are fetched from [Fake Store API](https://fakestoreapi.com/). If the API is unavailable, local mock data is used.
+- **Cart** state is managed in Redux and persisted for the session.
+
+## Scripts
+
+- `dev` – Start development server
+- `build` – Build for production
+- `preview` – Preview production build
+- `lint` – Run ESLint
+- `lint:fix` – Auto-fix lint issues
+
+## Folder Highlights
+
+- `src/pages/` – Home, Cart, and Product detail pages
+- `src/store/` – Redux slices for cart and products, RTK Query API setup
+- `src/components/common/` – Reusable UI components (Card, Button, etc.)
+- `src/types/` – TypeScript interfaces for products and cart
+
+## License
+
+MIT
+},
+// other options...
+},
+},
+])
+
+````
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
@@ -70,5 +137,4 @@ export default defineConfig([
     },
   },
 ])
-```
-![CI](https://github.com/den3538/redux-toolkit/actions/workflows/ci.yml/badge.svg)
+````
